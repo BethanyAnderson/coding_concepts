@@ -4,6 +4,7 @@ import TableComponent from './TableComponent';
 import Character from './Character';
 
 class ChessBoard extends Component {
+
     constructor(props) {
         super(props);
         this.width = 8;
@@ -21,7 +22,11 @@ class ChessBoard extends Component {
 
     directionClick(e){
         this.characterRef.current.moveForward();
+        this.characterRef.current.moveBackward();
+        this.characterRef.current.moveLeft();
+        this.characterRef.current.moveRight(); 
     }
+
   
     generateTable() {
       var tableData = {
@@ -34,8 +39,8 @@ class ChessBoard extends Component {
           [ "5", "" , "", "", "", "", "", "", "" ],
           [ "6", "" , "", "", "", "", "", "", "" ],
           [ "7", "" , "", "", "", "", "", "", "" ],
-          [ "8", "" , "", "", "", "", "", "", "" ],
-          [ "9", "" , "", "", "", "", "", "", "" ]
+          [ "8", "" , "", "", "", "", "", "", "" ]
+
         ]
       };
 
@@ -44,9 +49,17 @@ class ChessBoard extends Component {
         var col = alphabeticIndex.getCharIndex(coord[0]);
         var row = +coord[1];
         tableData.rows[row - 1][col + 1] = <span style={{color: this.props.config.setup[coord]}}>&#9679;</span>;
+
+        //store the setup locally
+        //when the character moves call a function on here passing it in
+        //if the colour matches then count it as stored 
       });
   
       return tableData;
+    }
+   
+    updateTable(){
+      
     }
 
     generateHeaders() {

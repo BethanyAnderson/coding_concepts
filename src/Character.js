@@ -12,7 +12,7 @@ class Character extends Component{
               y: 1
           },
           positionOffset:{
-              top: -459,
+              top: -408,
               left: -153
           }
         };
@@ -24,16 +24,22 @@ class Character extends Component{
         this.setState(this.state);
     }
 
-    moveBack(){
+    moveBackward(){
         this.state.position.y--;
+        this.state.positionOffset.top -= 51;
+        this.setState(this.state);
     }
 
     moveLeft(){
         this.state.position.x--;
+        this.state.positionOffset.left -= 51;
+        this.setState(this.state);
     }
 
     moveRight(){
         this.state.position.x++;
+        this.state.positionOffset.left += 51;
+        this.setState(this.state);
     }
 
 
